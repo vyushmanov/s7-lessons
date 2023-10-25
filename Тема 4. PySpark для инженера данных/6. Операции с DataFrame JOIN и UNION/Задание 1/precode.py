@@ -30,4 +30,5 @@ columns_library = ['book_id', 'Library_id']
 # создаём датафреймы
 df = spark.createDataFrame(data=book, schema=columns)
 df_library  = spark.createDataFrame(data=library, schema=columns_library )
-# напишите ваш код ниже
+df_join = df.join(df_library, on='book_id', how='leftanti')
+df_join.select('title').show(10,False)
