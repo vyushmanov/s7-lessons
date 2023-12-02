@@ -1,1 +1,16 @@
 Сохраните сюда результат вывода:
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=false
++- InMemoryTableScan [book_id#316L, title#314, author#315]
+      +- InMemoryRelation [book_id#316L, title#314, author#315], StorageLevel(disk, memory, deserialized, 1 replicas)
+            +- AdaptiveSparkPlan isFinalPlan=false
+               +- Project [book_id#316L, title#314, author#315]
+                  +- SortMergeJoin [book_id#316L], [book_id#320L], LeftAnti
+                     :- Sort [book_id#316L ASC NULLS FIRST], false, 0
+                     :  +- Exchange hashpartitioning(book_id#316L, 200), ENSURE_REQUIREMENTS, [plan_id=1002]
+                     :     +- Scan ExistingRDD[title#314,author#315,book_id#316L]
+                     +- Sort [book_id#320L ASC NULLS FIRST], false, 0
+                        +- Exchange hashpartitioning(book_id#320L, 200), ENSURE_REQUIREMENTS, [plan_id=1003]
+                           +- Project [book_id#320L]
+                              +- Filter isnotnull(book_id#320L)
+                                 +- Scan ExistingRDD[book_id#320L,Library_id#321]

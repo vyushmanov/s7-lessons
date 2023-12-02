@@ -1,0 +1,1 @@
+spark-submit --master yarn --num-executors 10 --deploy-mode cluster partition.py 2022-05-31 hdfs://rc1a-dataproc-m-dg5lgqqm7jju58f9.mdb.yandexcloud.net:8020/user/master/data/events/ hdfs://rc1a-dataproc-m-dg5lgqqm7jju58f9.mdb.yandexcloud.net:8020/user/vyushmanov/data/events
