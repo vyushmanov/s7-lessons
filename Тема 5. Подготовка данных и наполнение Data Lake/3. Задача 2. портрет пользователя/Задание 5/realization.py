@@ -82,7 +82,7 @@ def calculate_user_interests(date, depth, spark, host, events_base_path):
     df_tags = df_reaction \
         .join(df_message, on='message_id', how='inner')
     # df_tags.printSchema()
-12
+
     df_tags = df_tags \
         .groupBy('reaction_type', "user_id", 'tag') \
         .agg(psf.count("tag").alias("tag_top"))

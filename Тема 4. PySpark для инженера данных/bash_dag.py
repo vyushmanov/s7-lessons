@@ -27,4 +27,8 @@ bash_operator = BashOperator(
     dag=dag
 )
 
-bash_operator 
+bash_operator
+
+
+
+
